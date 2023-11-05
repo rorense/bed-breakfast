@@ -8,7 +8,7 @@ const Logo = () => {
 
   return (
     <Image
-      src="/BnB_logo.png"
+      src="/images/logo.png"
       alt="logo"
       className="hidden md:block cursor-pointer"
       height="100"
