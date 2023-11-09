@@ -8,6 +8,8 @@ import { FieldValues, SubmitHandler, set, useForm } from "react-hook-form";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import Modal from "./Modal";
 import { on } from "events";
+import Heading from "../Heading";
+import Input from "../inputs/Input";
 
 // Component for entering register details
 const RegisterModal = () => {
@@ -44,6 +46,13 @@ const RegisterModal = () => {
       });
   };
 
+  const bodyContent = (
+    <div className="flex flex-col gap-4">
+      <Heading title="Welcome to Bnb" subtitle="Make an account" center />
+      <Input />
+    </div>
+  );
+
   return (
     <Modal
       disabled={loading}
@@ -52,6 +61,7 @@ const RegisterModal = () => {
       actionLabel="Continue"
       onClose={RegisterModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
+      body={bodyContent}
     />
   );
 };
