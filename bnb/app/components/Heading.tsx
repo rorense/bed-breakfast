@@ -1,5 +1,6 @@
 "use client";
 
+// Reusable heading component
 interface HeadingProps {
   title: string;
   subtitle: string;

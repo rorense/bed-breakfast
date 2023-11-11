@@ -7,7 +7,6 @@ import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, set, useForm } from "react-hook-form";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import Modal from "./Modal";
-import { on } from "events";
 import Heading from "../Heading";
 import Input from "../inputs/Input";
 
@@ -29,7 +28,7 @@ const RegisterModal = () => {
     },
   });
 
-  // Action when submit the login form
+  // Action when submit the login form.
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setLoading(true);
 
