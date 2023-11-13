@@ -5,5 +5,6 @@ Tech Stacks Used:
 - Zustand
 - React-Icons
 - TailWind CSS
-- React Hook Form
+- React Hook Form (Forms)
 - Axios
+- React-Hot-Toast (Notification)
