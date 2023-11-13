@@ -28,7 +28,7 @@ const RegisterModal = () => {
     },
   });
 
-  // Action when submit the login form.
+  // Action when submit the login form
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setLoading(true);
 
