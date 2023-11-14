@@ -1,12 +1,12 @@
 Tech Stacks Used:
 
 - Next 13
-- Axios
-- Zustand
+- Zustand (Simple state management)
 - React-Icons
 - TailWind CSS
 - React Hook Form (Forms)
-- Axios
+- Axios (data fetching)
 - React-Hot-Toast (Notification)
-- Prisma
-- MongoDB
+- Prisma (Object-relational mapping)
+- MongoDB (Database)
+- NextAuth (Authentication)
