@@ -10,3 +10,4 @@ Tech Stacks Used:
 - Prisma (Object-relational mapping)
 - MongoDB (Database)
 - NextAuth (Authentication)
+- Bcrypt (Password hasher)
