@@ -8,3 +8,5 @@ Tech Stacks Used:
 - React Hook Form (Forms)
 - Axios
 - React-Hot-Toast (Notification)
+- Prisma
+- MongoDB
