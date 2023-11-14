@@ -1,9 +1,9 @@
 "use client";
 
 import axios from "axios";
-import { AiFillGithub, AiOutlineGithub } from "react-icons/ai";
+import { AiOutlineGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { FieldValues, SubmitHandler, set, useForm } from "react-hook-form";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import Modal from "./Modal";
@@ -12,9 +12,9 @@ import Input from "../inputs/Input";
 import toast from "react-hot-toast";
 import Button from "../Button";
 
-// Component for entering register details
+// Modal component for entering register details
 const RegisterModal = () => {
-  const RegisterModal = useRegisterModal();
+  const registerModal = useRegisterModal();
   const [loading, setLoading] = useState(false);
 
   // Initialising react-hook-form variables
@@ -37,9 +37,10 @@ const RegisterModal = () => {
     axios
       .post("api/register", data)
       .then(() => {
-        RegisterModal.onClose();
+        registerModal.onClose();
       })
       .catch((error) => {
+        // Popup error message
         toast.error("Someting went wrong!");
       })
       .finally(() => {
@@ -99,7 +100,7 @@ const RegisterModal = () => {
           <div>Already have an account?</div>
           <div
             className="text-neutral-800 cursor-pointer hover:underline"
-            onClick={RegisterModal.onClose}
+            onClick={registerModal.onClose}
           >
             Login
           </div>
@@ -111,10 +112,10 @@ const RegisterModal = () => {
   return (
     <Modal
       disabled={loading}
-      isOpen={RegisterModal.isOpen}
+      isOpen={registerModal.isOpen}
       title="Register"
       actionLabel="Continue"
-      onClose={RegisterModal.onClose}
+      onClose={registerModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}
       footer={footerContent}

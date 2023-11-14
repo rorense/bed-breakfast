@@ -9,6 +9,7 @@ interface RegisterModalStore {
   onClose: () => void;
 }
 
+// Creating a store for the register modal
 const useRegisterModal = create<RegisterModalStore>((set) => ({
   isOpen: true,
   onOpen: () => set({ isOpen: true }),
