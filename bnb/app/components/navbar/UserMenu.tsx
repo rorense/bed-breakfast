@@ -5,11 +5,11 @@ import { useCallback, useState } from "react";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
-import { User } from "@prisma/client";
 import { signOut } from "next-auth/react";
+import { SafeUser } from "@/app/types";
 
 interface UserMenuPops {
-  currentUser?: User | null;
+  currentUser?: SafeUser | null;
 }
 
 // User menu component for login and signout
