@@ -11,3 +11,4 @@ Tech Stacks Used:
 - MongoDB (Database)
 - NextAuth (Authentication)
 - Bcrypt (Password hasher)
+- Query-string
