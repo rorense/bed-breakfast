@@ -15,6 +15,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
   selected,
 }) => {
   const router = useRouter();
+  // useSearchParams() isa hook which retrieves the current search params from the URL.
   const params = useSearchParams();
 
   //   Handling click for categories
@@ -38,7 +39,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
       delete updatedQuery.category;
     }
 
-    // generate url string
+    // generate url string.
     const url = qs.stringifyUrl(
       {
         url: "/",
