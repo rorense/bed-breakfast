@@ -28,7 +28,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
       currentQuery = qs.parse(params.toString());
     }
 
-    // Spread and add them onto new category
+    // Spread and add them onto new category.
     const updatedQuery: any = {
       ...currentQuery,
       category: label,
