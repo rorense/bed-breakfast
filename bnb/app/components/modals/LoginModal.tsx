@@ -14,7 +14,7 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-// Modal component for entering register details
+// Modal component for entering register details.
 const LoginModal = () => {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
