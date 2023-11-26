@@ -2,7 +2,7 @@
 import axios from "axios";
 import { AiOutlineGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, set, useForm } from "react-hook-form";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import Modal from "./Modal";
@@ -55,6 +55,12 @@ const LoginModal = () => {
     });
   };
 
+  // Toggle component to switch between login and register modal
+  const toggle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
+
   // Main body content
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -96,12 +102,12 @@ const LoginModal = () => {
       />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="justify-center flex flex-row items-center gap-2">
-          <div>Already have an account?</div>
+          <div>First time using Bnb?</div>
           <div
             className="text-neutral-800 cursor-pointer hover:underline"
-            onClick={registerModal.onClose}
+            onClick={toggle}
           >
-            Login
+            Create an account
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@
 import axios from "axios";
 import { AiOutlineGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, set, useForm } from "react-hook-form";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import Modal from "./Modal";
@@ -12,10 +12,12 @@ import Input from "../inputs/Input";
 import toast from "react-hot-toast";
 import Button from "../Button";
 import { signIn } from "next-auth/react";
+import useLoginModal from "@/app/hooks/useLoginModal";
 
 // Modal component for entering register details
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
   const [loading, setLoading] = useState(false);
 
   // Initialising react-hook-form variables
@@ -49,6 +51,12 @@ const RegisterModal = () => {
         setLoading(false);
       });
   };
+
+  // Toggle component to switch between login and register modal
+  const toggle = useCallback(() => {
+    registerModal.onClose();
+    loginModal.onOpen();
+  }, [loginModal, registerModal]);
 
   // Main body content
   const bodyContent = (
@@ -102,7 +110,7 @@ const RegisterModal = () => {
           <div>Already have an account?</div>
           <div
             className="text-neutral-800 cursor-pointer hover:underline"
-            onClick={registerModal.onClose}
+            onClick={toggle}
           >
             Login
           </div>
