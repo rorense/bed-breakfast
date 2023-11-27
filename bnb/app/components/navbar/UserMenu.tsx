@@ -5,6 +5,7 @@ import { useCallback, useState } from "react";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
+import useRentModal from "@/app/hooks/useRentModal";
 import { signOut } from "next-auth/react";
 import { SafeUser } from "@/app/types";
 
@@ -17,11 +18,21 @@ const UserMenu: React.FC<UserMenuPops> = ({ currentUser }) => {
   const [isOpen, setIsOpen] = useState(false);
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
+  const rentModal = useRentModal();
 
   //   function for toggling menu onClick
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
   }, []);
+
+  const onRent = useCallback(() => {
+    if (!currentUser) {
+      return loginModal.onOpen();
+    }
+
+    // Open rent modal
+    rentModal.onOpen();
+  }, [currentUser, loginModal, rentModal]);
 
   return (
     <div className="relative">
@@ -33,7 +44,7 @@ const UserMenu: React.FC<UserMenuPops> = ({ currentUser }) => {
         gap-3"
       >
         <div
-          onClick={() => {}}
+          onClick={onRent}
           className="
             hidden 
             md:block 
@@ -68,7 +79,7 @@ const UserMenu: React.FC<UserMenuPops> = ({ currentUser }) => {
                 <MenuItem onClick={() => {}} label="My favourites" />
                 <MenuItem onClick={() => {}} label="My reservations" />
                 <MenuItem onClick={() => {}} label="My properties" />
-                <MenuItem onClick={() => {}} label="Bnb my home" />
+                <MenuItem onClick={rentModal.onOpen} label="Bnb my home" />
                 <hr />
                 <MenuItem onClick={() => signOut()} label="Log Out" />
               </>
