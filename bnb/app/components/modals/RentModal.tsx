@@ -65,6 +65,7 @@ const RentModal = () => {
     setStep((value) => value + 1);
   };
 
+  // If the rent modal is on the last step, no next option but create
   const actionLabel = useMemo(() => {
     if (step === STEPS.PRICE) {
       return "Create";
@@ -73,6 +74,7 @@ const RentModal = () => {
     return "Next";
   }, [step]);
 
+  // If the rent modal is on the first step, no back option
   const secondaryLabel = useMemo(() => {
     if (step === STEPS.CATEGORY) {
       return "undefined";
@@ -81,7 +83,7 @@ const RentModal = () => {
     return "Back";
   }, [step]);
 
-  // Changing body content based on step
+  // Body content for category step
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
@@ -106,12 +108,24 @@ const RentModal = () => {
     </div>
   );
 
+  // Body content for location step
+  if (step === STEPS.LOCATION) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Where is your place located?"
+          subtitle="Help guests find you!"
+        />
+      </div>
+    );
+  }
+
   return (
     <Modal
       title="Bnb your home"
       isOpen={rentModal.isOpen}
       onClose={rentModal.onClose}
-      onSubmit={rentModal.onClose}
+      onSubmit={onNext}
       actionLabel={actionLabel}
       secondaryActionLabel={secondaryLabel}
       secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
