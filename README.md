@@ -13,3 +13,4 @@ Tech Stacks Used:
 - Bcrypt (Password hasher)
 - Query-string
 - World-countries (NPM)
+- React-select (NPM)
