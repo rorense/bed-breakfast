@@ -3,6 +3,7 @@
 import useCountries from "@/app/hooks/useCountries";
 import Select from "react-select";
 
+// Type for the value of the select
 export type CountrySelectValue = {
   flag: string;
   label: string;
@@ -17,6 +18,7 @@ interface CountrySelectProps {
 }
 
 const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
+  // Using useCountries custom hook
   const { getAll } = useCountries();
 
   return (
