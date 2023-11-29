@@ -7,6 +7,7 @@ import { categories } from "../navbar/Categories";
 import CategoryInput from "../inputs/CategoryInput";
 import { FieldValues, useForm } from "react-hook-form";
 
+// Different steps for different categories
 enum STEPS {
   CATEGORY = 0,
   LOCATION = 1,
