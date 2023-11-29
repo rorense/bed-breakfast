@@ -12,3 +12,4 @@ Tech Stacks Used:
 - NextAuth (Authentication)
 - Bcrypt (Password hasher)
 - Query-string
+- World-countries (NPM)
