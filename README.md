@@ -14,3 +14,4 @@ Tech Stacks Used:
 - Query-string
 - World-countries (NPM)
 - React-select (NPM)
+- Leaflet & React-Leaflet (Interactive Maps)

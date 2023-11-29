@@ -7,6 +7,7 @@ import { categories } from "../navbar/Categories";
 import CategoryInput from "../inputs/CategoryInput";
 import { FieldValues, useForm } from "react-hook-form";
 import CountrySelect from "../inputs/CountrySelect";
+import dynamic from "next/dynamic";
 
 // Different steps for different categories
 enum STEPS {
@@ -45,8 +46,15 @@ const RentModal = () => {
     },
   });
 
-  // To watch for changes in category input when clicked
+  // To watch for changes in input when clicked
   const category = watch("category");
+  const location = watch("location");
+
+  // Dynamic import for map
+  const Map = useMemo(
+    () => dynamic(() => import("../Map"), { ssr: false }),
+    [location]
+  );
 
   // Custom hook for setting custom value
   const setCustomValue = (id: string, value: any) => {
@@ -96,6 +104,7 @@ const RentModal = () => {
         {/* Mapping through each category */}
         {categories.map((item) => (
           <div key={item.label} className="col-span-1">
+            {/* Updating the category value for form */}
             <CategoryInput
               onClick={(category) => {
                 setCustomValue("category", category);
@@ -118,7 +127,13 @@ const RentModal = () => {
           title="Where is your place located?"
           subtitle="Help guests find you!"
         />
-        <CountrySelect />
+        <CountrySelect
+          //  Setting value for location
+          onChange={(value) => setCustomValue("location", value)}
+          value={location}
+        />
+        {/* Centers to selected countries */}
+        <Map center={location?.latlng} />
       </div>
     );
   }
