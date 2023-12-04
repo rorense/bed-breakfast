@@ -3,7 +3,7 @@
 import useCountries from "@/app/hooks/useCountries";
 import Select from "react-select";
 
-// Type for the value of the select.
+// Type for the value of the select
 export type CountrySelectValue = {
   flag: string;
   label: string;
