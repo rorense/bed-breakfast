@@ -15,3 +15,4 @@ Tech Stacks Used:
 - World-countries (NPM)
 - React-select (NPM)
 - Leaflet & React-Leaflet (Interactive Maps)
+- Cloudinary & Next-Cloudinary(Image upload)
