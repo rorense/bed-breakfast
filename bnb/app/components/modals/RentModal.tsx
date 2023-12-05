@@ -50,6 +50,9 @@ const RentModal = () => {
   // To watch for changes in input when clicked
   const category = watch("category");
   const location = watch("location");
+  const guestCount = watch("guestCount");
+  const roomCount = watch("roomCount");
+  const bathroomCount = watch("bathroomCount");
 
   // Dynamic import for map
   const Map = useMemo(
@@ -146,7 +149,26 @@ const RentModal = () => {
           title="Share some basic information about your place"
           subtitle="What amenities do you have?"
         />
-        <Counter title="Number of Guests" subtitle="How many guests?" />
+        <Counter
+          title="Guests"
+          subtitle="How many guests do you allow?"
+          value={guestCount}
+          onChange={(value) => setCustomValue("guestCount", value)}
+        />
+        <hr />
+        <Counter
+          title="Guests"
+          subtitle="How many rooms do you have?"
+          value={roomCount}
+          onChange={(value) => setCustomValue("roomCount", value)}
+        />
+        <hr />
+        <Counter
+          title="Guests"
+          subtitle="How many bathrooms do you have?"
+          value={bathroomCount}
+          onChange={(value) => setCustomValue("bathroomCount", value)}
+        />
       </div>
     );
   }
