@@ -48,7 +48,7 @@ const RentModal = () => {
     },
   });
 
-  // To watch for changes in input when clicked
+  // To watch for changes in input when clicked.
   const category = watch("category");
   const location = watch("location");
   const guestCount = watch("guestCount");
