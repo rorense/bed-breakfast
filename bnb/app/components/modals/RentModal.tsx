@@ -13,7 +13,7 @@ import ImageUpload from "../inputs/ImageUpload";
 import Input from "../inputs/Input";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 // Different steps for different categories
 enum STEPS {
@@ -97,9 +97,21 @@ const RentModal = () => {
 
     setIsLoading(true);
 
-    axios.post("/api/listings", data).then(() => {
-      toast.success("Listing created!");
-    });
+    axios
+      .post("/api/listings", data)
+      .then(() => {
+        toast.success("Listing created!");
+        router.refresh();
+        reset();
+        setStep(STEPS.CATEGORY);
+        rentModal.onClose();
+      })
+      .catch(() => {
+        toast.error("Something went wrong");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   // If the rent modal is on the last step, no next option but create
@@ -269,7 +281,7 @@ const RentModal = () => {
       title="Bnb your home"
       isOpen={rentModal.isOpen}
       onClose={rentModal.onClose}
-      onSubmit={onNext}
+      onSubmit={handleSubmit(onSubmit)}
       actionLabel={actionLabel}
       secondaryActionLabel={secondaryLabel}
       secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
