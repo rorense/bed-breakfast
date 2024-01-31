@@ -2,10 +2,13 @@ import React from "react";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
 import getListings from "./actions/getListings";
+import ListingCard from "./components/listings/ListingCard";
+import getCurrentUser from "./actions/getCurrentUser";
 
 // Page Components
 async function page() {
   const listings = await getListings();
+  const currentUser = await getCurrentUser();
 
   if (listings.length == 0) {
     return <EmptyState showReset />;
@@ -25,7 +28,15 @@ async function page() {
       2xl:grid-cols-6
       gap-8"
       >
-        <div>My Future listings</div>
+        {listings.map((listing: any) => {
+          return (
+            <ListingCard
+              key={listing.id}
+              data={listing}
+              currentUser={currentUser}
+            />
+          );
+        })}
       </div>
     </Container>
   );
