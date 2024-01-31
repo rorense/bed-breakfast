@@ -1,12 +1,13 @@
 import React from "react";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
+import getListings from "./actions/getListings";
 
 // Page Components
-function page() {
-  const isEmpty = true;
+async function page() {
+  const listings = await getListings();
 
-  if (isEmpty) {
+  if (listings.length == 0) {
     return <EmptyState showReset />;
   }
 
