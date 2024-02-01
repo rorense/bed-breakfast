@@ -18,7 +18,7 @@ async function page() {
     <Container>
       <div
         className="
-      pt-24 
+      pt-36 
       grid 
       grid-cols-1 
       sm:grid-cols-2 
