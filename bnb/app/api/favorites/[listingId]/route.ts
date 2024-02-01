@@ -20,7 +20,7 @@ export async function POST(request: Request, { params }: { params: IParams }) {
     throw new Error("Invalid listing ID");
   }
 
-  let favoriteIds = { ...(currentUser.favoriteIds || []) };
+  let favoriteIds = [...(currentUser.favoriteIds || [])];
 
   favoriteIds.push(listingId);
 
@@ -29,7 +29,7 @@ export async function POST(request: Request, { params }: { params: IParams }) {
       id: currentUser.id,
     },
     data: {
-      favoriteIds: favoriteIds,
+      favoriteIds,
     },
   });
 
@@ -53,7 +53,7 @@ export async function DELETE(
     throw new Error("Invvalid ID");
   }
 
-  let favoriteIds = { ...(currentUser.favoriteIds || []) };
+  let favoriteIds = [...(currentUser.favoriteIds || [])];
 
   favoriteIds = favoriteIds.filter((id) => id !== listingId);
 
@@ -62,7 +62,7 @@ export async function DELETE(
       id: currentUser.id,
     },
     data: {
-      favoriteIds: favoriteIds,
+      favoriteIds,
     },
   });
 
