@@ -1,5 +1,4 @@
 "use client";
-
 import Container from "../Container";
 import { TbBeach, TbMountain, TbPool } from "react-icons/tb";
 import {
@@ -105,7 +104,7 @@ const Categories = () => {
   const isMainPage = pathName === "/";
 
   if (!isMainPage) {
-    null;
+    return null;
   }
 
   return (
