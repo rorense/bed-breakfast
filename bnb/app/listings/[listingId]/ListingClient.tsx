@@ -7,7 +7,11 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 import { SafeUser, safeListings } from "@/app/types";
 import { Reservation } from "@prisma/client";
 import axios from "axios";
-import { differenceInDays, eachDayOfInterval } from "date-fns";
+import {
+  differenceInCalendarDays,
+  differenceInDays,
+  eachDayOfInterval,
+} from "date-fns";
 import { useRouter } from "next/navigation";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
@@ -83,14 +87,17 @@ const ListingClient: React.FC<ListingClientProps> = ({
   // Action to change the day count and total price
   useEffect(() => {
     if (dateRange.startDate && dateRange.endDate) {
-      const dayCount = differenceInDays(dateRange.endDate, dateRange.startDate);
+      const dayCount = differenceInCalendarDays(
+        dateRange.endDate,
+        dateRange.startDate
+      );
       if (dayCount && listing.price) {
         setTotalPrice(dayCount * listing.price);
       } else {
         setTotalPrice(listing.price);
       }
     }
-  }, []);
+  }, [dateRange, listing.price]);
 
   const category = useMemo(() => {
     return categories.find((item) => item.label == listing.category);
@@ -117,6 +124,17 @@ const ListingClient: React.FC<ListingClientProps> = ({
               bathroomCount={listing.bathroomCount}
               locationValue={listing.locationValue}
             />
+            <div className="order-first mb-10 md:order-last md:col-span-3 ">
+              <ListingReservation
+                price={listing.price}
+                totalPrice={totalPrice}
+                onChangeDate={(value) => setDateRange(value)}
+                dateRange={dateRange}
+                onSubmit={onCreateReservation}
+                disabled={isLoading}
+                disabledDates={disabledDates}
+              />
+            </div>
           </div>
         </div>
       </div>
