@@ -1,13 +1,17 @@
 import React from "react";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
-import getListings from "./actions/getListings";
+import getListings, { IListingParams } from "./actions/getListings";
 import ListingCard from "./components/listings/ListingCard";
 import getCurrentUser from "./actions/getCurrentUser";
 
+interface HomeProps {
+  searchParams: IListingParams;
+}
+
 // Page Components
-async function page() {
-  const listings = await getListings();
+const Home = async ({ searchParams }: HomeProps) => {
+  const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
 
   if (listings.length == 0) {
@@ -40,6 +44,6 @@ async function page() {
       </div>
     </Container>
   );
-}
+};
 
-export default page;
+export default Home;
