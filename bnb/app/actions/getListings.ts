@@ -8,7 +8,7 @@ export interface IListingParams {
   startDate?: string;
   endDate?: string;
   locationValue?: string;
-  category?: string;
+  category: string;
 }
 
 export default async function getListings(params: IListingParams) {
