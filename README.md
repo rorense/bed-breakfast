@@ -17,3 +17,4 @@ Tech Stacks Used:
 - Leaflet & React-Leaflet (Interactive Maps)
 - Cloudinary & Next-Cloudinary(Image upload)
 - Date-fns (dates)
+- React-Spinners (Loaders)
