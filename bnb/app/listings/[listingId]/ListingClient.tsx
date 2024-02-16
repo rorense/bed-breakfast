@@ -5,7 +5,7 @@ import ListingInfo from "@/app/components/listings/ListingInfo";
 import ListingReservation from "@/app/components/listings/ListingReservation";
 import { categories } from "@/app/components/navbar/Categories";
 import useLoginModal from "@/app/hooks/useLoginModal";
-import { SafeUser, safeListings, safeReservations } from "@/app/types";
+import { SafeUser, SafeListing, SafeReservation } from "@/app/types";
 import axios from "axios";
 import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
 import { useRouter } from "next/navigation";
@@ -20,8 +20,8 @@ const initialDateRange = {
 };
 
 interface ListingClientProps {
-  reservations?: safeReservations[];
-  listing: safeListings & { user: SafeUser };
+  reservations?: SafeReservation[];
+  listing: SafeListing & { user: SafeUser };
   currentUser?: SafeUser | null;
 }
 
@@ -36,7 +36,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
   const disabledDates = useMemo(() => {
     let dates: Date[] = [];
 
-    reservations.forEach((reservation) => {
+    reservations.forEach((reservation: any) => {
       const range = eachDayOfInterval({
         start: new Date(reservation.startDate),
         end: new Date(reservation.endDate),
@@ -96,7 +96,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
   }, [dateRange, listing.price]);
 
   const category = useMemo(() => {
-    return categories.find((item) => item.label == listing.category);
+    return categories.find((item) => item.label === listing.category);
   }, [listing.category]);
 
   return (
