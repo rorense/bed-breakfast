@@ -34,6 +34,7 @@ const SearchModal = () => {
     key: "selection",
   });
 
+  // Reusing map component
   const Map = useMemo(
     () =>
       dynamic(() => import("../Map"), {
