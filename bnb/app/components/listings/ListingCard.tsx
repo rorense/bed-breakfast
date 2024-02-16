@@ -1,6 +1,6 @@
 "use client";
 import useCountries from "@/app/hooks/useCountries";
-import { SafeUser, safeListings, safeReservations } from "@/app/types";
+import { SafeUser, SafeListing, SafeReservation } from "@/app/types";
 import { useRouter } from "next/navigation";
 import React, { useCallback, useMemo } from "react";
 import { format } from "date-fns";
@@ -9,8 +9,8 @@ import HeartButton from "../HeartButton";
 import Button from "../Button";
 
 interface ListingCardProps {
-  data: safeListings;
-  reservation?: safeReservations;
+  data: SafeListing;
+  reservation?: SafeReservation;
   onAction?: (id: string) => void;
   disabled?: boolean;
   actionLabel?: string;
