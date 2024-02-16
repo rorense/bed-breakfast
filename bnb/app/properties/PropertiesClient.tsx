@@ -3,14 +3,14 @@
 import { useCallback, useState } from "react";
 import Container from "../components/Container";
 import Heading from "../components/Heading";
-import { SafeUser, safeListings } from "../types";
+import { SafeUser, SafeListing } from "../types";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
 import ListingCard from "../components/listings/ListingCard";
 
 interface PropertiesClientProps {
-  listings: safeListings[];
+  listings: SafeListing[];
   currentUser?: SafeUser | null;
 }
 
