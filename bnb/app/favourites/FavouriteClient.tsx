@@ -3,11 +3,11 @@
 import Container from "../components/Container";
 import Heading from "../components/Heading";
 import ListingCard from "../components/listings/ListingCard";
-import { SafeUser, safeListings } from "../types";
+import { SafeUser, SafeListing } from "../types";
 
 interface FavouriteClientProps {
   currentUser?: SafeUser | null;
-  listings: safeListings[];
+  listings: SafeListing[];
 }
 
 const FavouriteClient: React.FC<FavouriteClientProps> = ({
